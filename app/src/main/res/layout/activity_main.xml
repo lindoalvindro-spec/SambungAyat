@@ -1,0 +1,1629 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/mint_grey">
+
+    <!-- PRIMARY SCROLLABLE VIEWPORT -->
+    <ScrollView
+        android:id="@+id/mainScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewCustom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- ==================== 1. INTRO/SPLASH PANEL ==================== -->
+            <LinearLayout
+                android:id="@+id/panelIntro"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:visibility="visible">
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="40dp" />
+
+                <!-- Decorative Islamic Emblem -->
+                <FrameLayout
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="@android:color/transparent">
+                    <View
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/shape_circle_emerald" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="🌙"
+                        android:textSize="50sp" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tvIntroTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sambung Ayat"
+                    android:textColor="@color/emerald_primary"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Latihan Hafalan Al-Qur'an"
+                    android:textColor="@color/gray_text_sub"
+                    android:textSize="16sp"
+                    android:layout_marginTop="4dp" />
+
+                <!-- Quran Verse Quote Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="32dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="1dp"
+                    app:strokeColor="#FFE1B3"
+                    app:strokeWidth="1.5dp"
+                    app:cardBackgroundColor="@color/white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="وَلَقَدْ يَسَّرْنَا الْقُرْاٰنَ لِلذِّكْرِ فَهَلْ مِنْ مُّدَّكِرٍ"
+                            android:textSize="20sp"
+                            android:textColor="@color/emerald_dark"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:layout_marginBottom="12dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="&quot;Dan Kami telah memudahkan Al-Qur'an untuk pelajaran, maka adakah orang yang mau mengambil pelajaran?&quot;"
+                            android:textColor="@color/black"
+                            android:textSize="13sp"
+                            android:textStyle="italic"
+                            android:gravity="center"
+                            android:layout_marginBottom="6dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="(QS. Al-Qamar: 17)"
+                            android:textColor="@color/emerald_primary"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnStartApp"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="Mulai Latihan"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/emerald_primary"
+                    app:cornerRadius="14dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="© 2026 Sambung Ayat. Dibuat dengan niat tulus."
+                    android:textColor="@color/gray_text_sub"
+                    android:textSize="11sp"
+                    android:layout_marginTop="40dp" />
+
+            </LinearLayout>
+
+
+            <!-- ==================== 2. MAIN MENU (BERANDA) PANEL ==================== -->
+            <LinearLayout
+                android:id="@+id/panelMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <!-- 2.1 BEAUTIFUL HEADER ROW (Avatar, Title, Flame Streak) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="22dp">
+
+                    <!-- Profile Avatar Circle Frame -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        app:cardCornerRadius="22dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="#E2E8F0"
+                        app:strokeWidth="1.5dp"
+                        app:cardBackgroundColor="@color/white">
+                        <ImageView
+                            android:id="@+id/ivHeaderAvatar"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_avatar_placeholder"
+                            android:scaleType="centerCrop"
+                            android:padding="4dp" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- App Title Centered -->
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Sambung Ayat"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/forest_green"
+                        android:gravity="center"
+                        android:layout_marginEnd="8dp" />
+
+                    <!-- Golden/Orange Streak Bubble -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="#FFE1B3"
+                        app:strokeWidth="1dp"
+                        app:cardBackgroundColor="#FFF7ED">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🔥"
+                                android:textSize="13sp" />
+                            <TextView
+                                android:id="@+id/tvHeaderStreak"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="7"
+                                android:textSize="13sp"
+                                android:textStyle="bold"
+                                android:textColor="#EA580C"
+                                android:layout_marginStart="4dp" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <!-- 2.2 ASSALAMU'ALAIKUM USER GREETING & GOLD LEVEL TAG -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="22dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Assalamu'alaikum,"
+                        android:textSize="14sp"
+                        android:textColor="@color/gray_text_sub" />
+
+                    <TextView
+                        android:id="@+id/tvWelcomeTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ahmad F."
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="2dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="26dp"
+                        android:orientation="horizontal"
+                        android:background="@drawable/shape_capsule_gold"
+                        android:gravity="center"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:layout_marginTop="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🎖️"
+                            android:textSize="11sp" />
+                        <TextView
+                            android:id="@+id/tvUserLevel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="LEVEL 12"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:textColor="#78350F"
+                            android:layout_marginStart="4dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- 2.3 TARGET HARIAN CARD WITH CIRCULAR PROGRESS ARC -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="22dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="1dp"
+                    app:strokeColor="#EDF2F7"
+                    app:strokeWidth="1.2dp"
+                    app:cardBackgroundColor="@color/white">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="18dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_toStartOf="@+id/layoutTargetProgress">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Target Harian"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/tvTargetStatus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="15/20 Ayat tersambung"
+                                android:textColor="@color/gray_text_sub"
+                                android:layout_marginTop="4dp"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+
+                        <!-- Circular Progress bar matched -->
+                        <FrameLayout
+                            android:id="@+id/layoutTargetProgress"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true">
+
+                            <ProgressBar
+                                android:id="@+id/circularProgressBar"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:indeterminate="false"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:progressDrawable="@drawable/shape_circular_progress"
+                                android:max="100"
+                                android:progress="75" />
+
+                            <TextView
+                                android:id="@+id/tvProgressPercentage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="75%"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/forest_green"
+                                android:layout_gravity="center" />
+                        </FrameLayout>
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- 2.4 PRIMARY FOREST GREEN CTA START PLAY BUTTON -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnStartQuiz"
+                    android:layout_width="match_parent"
+                    android:layout_height="62dp"
+                    android:text="Mulai Sambung Ayat"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:icon="@drawable/ic_play"
+                    app:iconGravity="textStart"
+                    app:iconPadding="10dp"
+                    app:iconTint="@color/white"
+                    app:backgroundTint="@color/forest_green"
+                    app:cornerRadius="31dp"
+                    android:layout_marginBottom="22dp"
+                    android:elevation="2dp" />
+
+                <!-- 2.5 RESUME CARD (LANJUTKAN SURAH TERAKHIR) -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardLastSurah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="22dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="1dp"
+                    app:strokeColor="#EDF2F7"
+                    app:strokeWidth="1.2dp"
+                    app:cardBackgroundColor="@color/white"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="18dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_toStartOf="@+id/btnResumeLast">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="LANJUTKAN SURAH TERAKHIR"
+                                android:textColor="#F97316"
+                                android:textStyle="bold"
+                                android:textSize="10sp"
+                                android:letterSpacing="0.05" />
+
+                            <TextView
+                                android:id="@+id/tvLastSurahName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Al-Baqarah"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:layout_marginTop="5dp" />
+
+                            <TextView
+                                android:id="@+id/tvLastSurahDetail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Ayat 15 • Juz 1"
+                                android:textColor="@color/gray_text_sub"
+                                android:textSize="13sp"
+                                android:layout_marginTop="2dp" />
+                        </LinearLayout>
+
+                        <!-- Rounded Arrow Icon Container -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/btnResumeLast"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="0dp"
+                            app:cardBackgroundColor="#EFF6FF">
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="#2563EB" />
+                        </com.google.android.material.card.MaterialCardView>
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- 2.6 STATS GRID ROW (Ayat Dihafal & Peringkat Global) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="24dp">
+
+                    <!-- Blue Stat Card: Ayat Dihafal -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        app:cardCornerRadius="14dp"
+                        app:cardElevation="1dp"
+                        app:strokeColor="#EDF2F7"
+                        app:strokeWidth="1dp"
+                        app:cardBackgroundColor="@color/stat_blue_bg">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="16dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="📖"
+                                android:textSize="22sp" />
+                            <TextView
+                                android:id="@+id/tvStatTotalVerses"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="142"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:textSize="20sp"
+                                android:layout_marginTop="8dp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="AYAT DIHAFAL"
+                                android:textColor="@color/gray_text_sub"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                android:layout_marginTop="4dp"
+                                android:gravity="center" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Gold Stat Card: Peringkat Global -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        app:cardCornerRadius="14dp"
+                        app:cardElevation="1dp"
+                        app:strokeColor="#EDF2F7"
+                        app:strokeWidth="1dp"
+                        app:cardBackgroundColor="@color/stat_gold_bg">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="16dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🏆"
+                                android:textSize="22sp" />
+                            <TextView
+                                android:id="@+id/tvStatGlobalRank"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Top 15%"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:textSize="20sp"
+                                android:layout_marginTop="8dp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="PERINGKAT GLOBAL"
+                                android:textColor="@color/gray_text_sub"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                android:layout_marginTop="4dp"
+                                android:gravity="center" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+
+                <!-- Hidden view for fallback binding compatibility -->
+                <View
+                    android:id="@+id/cardBtnHistory"
+                    android:layout_width="1dp"
+                    android:layout_height="1dp"
+                    android:visibility="gone" />
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+                    <TextView
+                        android:id="@+id/tvMenuHighScore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+                    <TextView
+                        android:id="@+id/tvMenuPlayedCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+
+            <!-- ==================== 3. LEVEL/SURAH SELECTION PANEL ==================== -->
+            <LinearLayout
+                android:id="@+id/panelSelectLevel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Level &amp; Kategori Hafalan"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/forest_green"
+                    android:layout_marginBottom="6dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pilihlah Juz atau Surah khusus yang sedang ingin Anda latih untuk tantangan sambung ayat."
+                    android:textColor="@color/gray_text_sub"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="20dp" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="1dp"
+                    app:strokeColor="#EDF2F7"
+                    app:strokeWidth="1dp"
+                    android:layout_marginBottom="24dp"
+                    app:cardBackgroundColor="@color/white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Daftar Juz / Surah:"
+                            android:textStyle="bold"
+                            android:textSize="13sp"
+                            android:textColor="@color/black" />
+
+                        <Spinner
+                            android:id="@+id/spinnerSuraSelection"
+                            android:layout_width="match_parent"
+                            android:layout_height="54dp"
+                            android:layout_marginTop="10dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSelectLevelSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="Pilih &amp; Simpan Kategori"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/forest_green"
+                    app:cornerRadius="12dp" />
+
+                <!-- Configurable API Server Card -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Konfigurasi Server API"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#0F4C43"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginBottom="8dp" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="1dp"
+                    app:strokeColor="#EDF2F7"
+                    app:strokeWidth="1dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="@color/white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Alamat URL Server API:"
+                            android:textStyle="bold"
+                            android:textSize="13sp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="6dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Masukkan URL API untuk mengunduh daftar ayat dinamik dari backend Anda."
+                            android:textColor="@color/gray_text_sub"
+                            android:textSize="11sp"
+                            android:layout_marginBottom="10dp" />
+
+                        <EditText
+                            android:id="@+id/etServerApiUrl"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="http://192.168.1.12/quran_api/"
+                            android:inputType="textUri"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:background="@drawable/shape_edittext_bg"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/tvServerStatus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Status: Mode Lokal (Offline)"
+                            android:textColor="#64748B"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="6dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnConnectServer"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:text="Simpan &amp; Hubungkan Server"
+                            android:textColor="@color/white"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            app:backgroundTint="#0F4C43"
+                            app:cornerRadius="10dp"
+                            android:layout_marginTop="14dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Input Custom Verse Form Card -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Input Ayat Hafalan Kustom"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#0F4C43"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="8dp" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="1dp"
+                    app:strokeColor="#EDF2F7"
+                    app:strokeWidth="1dp"
+                    android:layout_marginBottom="24dp"
+                    app:cardBackgroundColor="@color/white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Simpan ayat baru ke database lokal agar langsung masuk ke dalam latihan permainan."
+                            android:textColor="@color/gray_text_sub"
+                            android:textSize="11sp"
+                            android:layout_marginBottom="14dp" />
+
+                        <!-- Surah Number & Name in Row -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="12dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginEnd="6dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="No. Surah:"
+                                    android:textStyle="bold"
+                                    android:textSize="12sp"
+                                    android:textColor="@color/black"
+                                    android:layout_marginBottom="4dp" />
+
+                                <EditText
+                                    android:id="@+id/etCustomSuraNumber"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="46dp"
+                                    android:hint="Contoh: 112"
+                                    android:inputType="number"
+                                    android:paddingStart="10dp"
+                                    android:paddingEnd="10dp"
+                                    android:background="@drawable/shape_edittext_bg"
+                                    android:textSize="13sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_weight="1.6"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginStart="6dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Nama Surah:"
+                                    android:textStyle="bold"
+                                    android:textSize="12sp"
+                                    android:textColor="@color/black"
+                                    android:layout_marginBottom="4dp" />
+
+                                <EditText
+                                    android:id="@+id/etCustomSuraName"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="46dp"
+                                    android:hint="Contoh: Al-Ikhlas"
+                                    android:inputType="text"
+                                    android:paddingStart="10dp"
+                                    android:paddingEnd="10dp"
+                                    android:background="@drawable/shape_edittext_bg"
+                                    android:textSize="13sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!-- Ayah Number -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No. Ayat:"
+                            android:textStyle="bold"
+                            android:textSize="12sp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="4dp" />
+
+                        <EditText
+                            android:id="@+id/etCustomAyahNumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="46dp"
+                            android:hint="Contoh: 1"
+                            android:inputType="number"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:background="@drawable/shape_edittext_bg"
+                            android:layout_marginBottom="12dp"
+                            android:textSize="13sp" />
+
+                        <!-- Arabic Text of the Ayat -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Teks Ayat (Bahasa Arab):"
+                            android:textStyle="bold"
+                            android:textSize="12sp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="4dp" />
+
+                        <EditText
+                            android:id="@+id/etCustomAyahText"
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:hint="Ketik atau paste teks Arab di sini..."
+                            android:inputType="textMultiLine"
+                            android:gravity="right|top"
+                            android:padding="12dp"
+                            android:background="@drawable/shape_edittext_bg"
+                            android:layout_marginBottom="16dp"
+                            android:textSize="14sp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnSaveCustomVerse"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:text="Simpan ke Database Lokal"
+                            android:textColor="@color/white"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            app:backgroundTint="#0F4C43"
+                            app:cornerRadius="10dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+
+            <!-- ==================== 4. HISTORY & RANKING PANEL ==================== -->
+            <LinearLayout
+                android:id="@+id/panelHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Scoreboard &amp; Riwayat"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/forest_green"
+                    android:layout_marginBottom="6dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Skor dirakankan secara lokal dari seluruh sesi bermain Sambung Ayat Anda."
+                    android:textColor="@color/gray_text_sub"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="20dp" />
+
+                <!-- Action row for sync -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Riwayat Skor Terakhir:"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSyncScoresToWeb"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="38dp"
+                        android:text="Sinkronisasi 🔄"
+                        android:textColor="@color/forest_green"
+                        android:textSize="11sp"
+                        app:strokeColor="@color/forest_green" />
+                </LinearLayout>
+
+                <!-- List of scores -->
+                <LinearLayout
+                    android:id="@+id/layoutHistoryList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+                <!-- Empty State -->
+                <TextView
+                    android:id="@+id/tvHistoryEmptyState"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Belum ada riwayat bermain. Mari selesaikan tantangan pertama Anda!"
+                    android:textSize="13sp"
+                    android:gravity="center"
+                    android:textColor="@color/gray_text_sub"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="32dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnHistoryBack"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kembali ke Beranda"
+                    android:textColor="@color/forest_green"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+
+            <!-- ==================== 5. USER PROFILE PANEL ==================== -->
+            <LinearLayout
+                android:id="@+id/panelUserProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Profil Pengguna"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/forest_green"
+                    android:layout_marginBottom="6dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sesuaikan nama panggung dan tinjau performa menghafal Anda."
+                    android:textColor="@color/gray_text_sub"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="20dp" />
+
+                <!-- Edit Profile Name Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="1dp"
+                    app:strokeColor="#EDF2F7"
+                    app:strokeWidth="1dp"
+                    android:layout_marginBottom="24dp"
+                    app:cardBackgroundColor="@color/white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nama Anda:"
+                            android:textStyle="bold"
+                            android:textSize="13sp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="8dp" />
+
+                        <EditText
+                            android:id="@+id/etProfileName"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="Ahmad F."
+                            android:inputType="textPersonName"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:background="@drawable/shape_edittext_bg"
+                            android:textSize="14sp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnSaveProfileName"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:text="Simpan Perubahan Nama"
+                            android:textColor="@color/white"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            app:backgroundTint="@color/forest_green"
+                            app:cornerRadius="10dp"
+                            android:layout_marginTop="16dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Detailed Statistics Summary Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="1dp"
+                    app:strokeColor="#EDF2F7"
+                    app:strokeWidth="1dp"
+                    app:cardBackgroundColor="@color/white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Statistik Lengkap"
+                            android:textStyle="bold"
+                            android:textSize="13sp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="12dp" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Skor Tertinggi:"
+                                android:textColor="@color/gray_text_sub" />
+                            <TextView
+                                android:id="@+id/tvProfileHighScore"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:text="0 pts"
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Total Latihan Selesai:"
+                                android:textColor="@color/gray_text_sub" />
+                            <TextView
+                                android:id="@+id/tvProfilePlayedCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:text="0 Kali"
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Status Menghafal:"
+                                android:textColor="@color/gray_text_sub" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:text="Aktif Hafalan Juz 30"
+                                android:textColor="@color/forest_green"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+
+            <!-- ==================== 6. ACTIVE PLAYING (QUIZ) PANEL ==================== -->
+            <LinearLayout
+                android:id="@+id/panelQuiz"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <!-- Header row with Close button on left, Flame/Streak pill in the center -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp">
+
+                    <!-- Close icon button "✕" on the left -->
+                    <TextView
+                        android:id="@+id/btnCancelQuiz"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?android:attr/selectableItemBackgroundBorderless"
+                        android:gravity="center"
+                        android:text="✕"
+                        android:textSize="20sp"
+                        android:textColor="#475569"
+                        android:textStyle="bold" />
+
+                    <!-- Soft capsule center badge '🔥 12' -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_centerInParent="true"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="0dp"
+                        app:strokeWidth="0dp"
+                        app:cardBackgroundColor="#EFF6FF">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🔥"
+                                android:textSize="13sp" />
+                            <TextView
+                                android:id="@+id/tvQuizStreak"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="12"
+                                android:textSize="13sp"
+                                android:textStyle="bold"
+                                android:textColor="#0369A1"
+                                android:layout_marginStart="4dp" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </RelativeLayout>
+
+                <!-- Time Progress Bar - Match Green styling in user screen -->
+                <ProgressBar
+                    android:id="@+id/progressQuizTime"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:max="100"
+                    android:progress="100"
+                    android:progressTint="#0F4C43"
+                    android:progressBackgroundTint="#E2E8F0"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Sub Header containing Question Counter, Score and Hearts -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="20dp">
+
+                    <TextView
+                        android:id="@+id/tvQuizCounter"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Soal 1 dari 10"
+                        android:textSize="13sp"
+                        android:textColor="#64748B"
+                        android:textStyle="bold" />
+
+                    <!-- Score count -->
+                    <TextView
+                        android:id="@+id/tvQuizScore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Skor: 0"
+                        android:textColor="#0F172A"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:layout_marginEnd="12dp" />
+
+                    <!-- Lives / Hearts -->
+                    <TextView
+                        android:id="@+id/tvQuizHearts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="❤️❤️❤️"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <!-- Verse Display Card - With Centered Yellow Chip for Surah -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="24dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="#F1F5F9"
+                    android:layout_marginBottom="28dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal"
+                        android:padding="28dp">
+
+                        <!-- Surah location badge top-center pill -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="16dp"
+                            app:cardElevation="0dp"
+                            app:cardBackgroundColor="#FEF3C7"
+                            app:strokeWidth="0dp"
+                            android:layout_marginBottom="20dp">
+                            <TextView
+                                android:id="@+id/tvQuizVerseHint"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Al-Baqarah : 255"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:textColor="#B45309"
+                                android:paddingStart="14dp"
+                                android:paddingEnd="14dp"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp" />
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <!-- BIG ARABIC TEXT OF THE CURRENT VERSE -->
+                        <TextView
+                            android:id="@+id/tvQuizArabicVerse"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="بِسْمِ اللهِ الرَّحْمٰنِ ..."
+                            android:textSize="26sp"
+                            android:textColor="#0F172A"
+                            android:gravity="center"
+                            android:lineSpacingMultiplier="1.4"
+                            android:layout_marginBottom="8dp" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Options Header Label -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pilihan Ayat Selanjutnya:"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#475569"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Option A -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOption0"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="58dp"
+                    android:text="فصلى ليربك"
+                    android:textSize="18sp"
+                    android:textColor="#1E293B"
+                    android:gravity="end|center_vertical"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:layout_marginBottom="12dp"
+                    app:iconGravity="start"
+                    app:iconSize="32dp"
+                    app:strokeColor="#E2E8F0"
+                    app:strokeWidth="1.2dp"
+                    app:cornerRadius="14dp"
+                    app:backgroundTint="@color/white" />
+
+                <!-- Option B -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOption1"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="58dp"
+                    android:text="ألم تر كيف فعل"
+                    android:textSize="18sp"
+                    android:textColor="#1E293B"
+                    android:gravity="end|center_vertical"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:layout_marginBottom="12dp"
+                    app:iconGravity="start"
+                    app:iconSize="32dp"
+                    app:strokeColor="#E2E8F0"
+                    app:strokeWidth="1.2dp"
+                    app:cornerRadius="14dp"
+                    app:backgroundTint="@color/white" />
+
+                <!-- Option C -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOption2"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="58dp"
+                    android:text="و الكافرون لهم"
+                    android:textSize="18sp"
+                    android:textColor="#1E293B"
+                    android:gravity="end|center_vertical"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:layout_marginBottom="12dp"
+                    app:iconGravity="start"
+                    app:iconSize="32dp"
+                    app:strokeColor="#E2E8F0"
+                    app:strokeWidth="1.2dp"
+                    app:cornerRadius="14dp"
+                    app:backgroundTint="@color/white" />
+
+                <!-- Option D -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOption3"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="58dp"
+                    android:text="في جبالها الشامخة"
+                    android:textSize="18sp"
+                    android:textColor="#1E293B"
+                    android:gravity="end|center_vertical"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:layout_marginBottom="24dp"
+                    app:iconGravity="start"
+                    app:iconSize="32dp"
+                    app:strokeColor="#E2E8F0"
+                    app:strokeWidth="1.2dp"
+                    app:cornerRadius="14dp"
+                    app:backgroundTint="@color/white" />
+
+                <!-- Bottom Sheet sliding premium feedback card layout -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardQuizFeedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="24dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardElevation="6dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="#E2E8F0"
+                    android:layout_marginBottom="16dp"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:id="@+id/layoutFeedbackBg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="16dp">
+
+                            <!-- Visual indicator Badge -->
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/feedbackIconContainer"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                app:cardCornerRadius="24dp"
+                                app:cardElevation="0dp"
+                                app:strokeWidth="0dp"
+                                app:cardBackgroundColor="#E6F4EA">
+                                <TextView
+                                    android:id="@+id/tvFeedbackIcon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="✔"
+                                    android:textSize="22sp"
+                                    android:textColor="#137333" />
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <View
+                                android:layout_width="16dp"
+                                android:layout_height="1dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tvFeedbackTitle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Masya Allah!"
+                                    android:textSize="21sp"
+                                    android:textStyle="bold"
+                                    android:textColor="#0F4C43" />
+
+                                <TextView
+                                    android:id="@+id/tvFeedbackDetails"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Jawaban kamu tepat sekali."
+                                    android:textSize="13sp"
+                                    android:textColor="#475569"
+                                    android:layout_marginTop="3dp" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!-- Next CTA Button integrated nicely -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnNextQuestion"
+                            android:layout_width="match_parent"
+                            android:layout_height="54dp"
+                            android:text="Lanjut"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:backgroundTint="#0F4C43"
+                            app:cornerRadius="14dp"
+                            android:visibility="visible" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- CUSTOM MAIN ACTIVE BOTTOM NAVIGATION BAR (Anchored Persistent on home screens) -->
+    <LinearLayout
+        android:id="@+id/bottomNavigationViewCustom"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        android:background="@color/bottom_nav_bg"
+        android:elevation="12dp"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:outlineProvider="bounds"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:visibility="gone">
+
+        <!-- Nav 1: Beranda -->
+        <LinearLayout
+            android:id="@+id/navBeranda"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+            <LinearLayout
+                android:id="@+id/layoutNavBerandaIconBg"
+                android:layout_width="54dp"
+                android:layout_height="32dp"
+                android:background="@drawable/shape_bottom_nav_pill"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🏠"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tvNavBerandaText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Beranda"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textColor="@color/forest_green"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <!-- Nav 2: Level -->
+        <LinearLayout
+            android:id="@+id/navLevel"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+            <LinearLayout
+                android:id="@+id/layoutNavLevelIconBg"
+                android:layout_width="54dp"
+                android:layout_height="32dp"
+                android:background="@android:color/transparent"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🗺️"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tvNavLevelText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Level"
+                android:textSize="10sp"
+                android:textColor="@color/gray_text_sub"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <!-- Nav 3: Peringkat -->
+        <LinearLayout
+            android:id="@+id/navPeringkat"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+            <LinearLayout
+                android:id="@+id/layoutNavPeringkatIconBg"
+                android:layout_width="54dp"
+                android:layout_height="32dp"
+                android:background="@android:color/transparent"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📊"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tvNavPeringkatText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Peringkat"
+                android:textSize="10sp"
+                android:textColor="@color/gray_text_sub"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <!-- Nav 4: Profil -->
+        <LinearLayout
+            android:id="@+id/navProfil"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+            <LinearLayout
+                android:id="@+id/layoutNavProfilIconBg"
+                android:layout_width="54dp"
+                android:layout_height="32dp"
+                android:background="@android:color/transparent"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="👤"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tvNavProfilText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profil"
+                android:textSize="10sp"
+                android:textColor="@color/gray_text_sub"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

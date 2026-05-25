@@ -1,0 +1,6 @@
+{
+  "name": "Sambung Ayat",
+  "description": "Aplikasi Latihan Hafalan Al-Qur'an dengan fitur sambung ayat dan integrasi database phpMyAdmin.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

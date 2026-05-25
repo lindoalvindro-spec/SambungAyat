@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="emerald_primary">#064E3B</color>
+    <color name="emerald_dark">#022C22</color>
+    <color name="emerald_light">#ECFDF5</color>
+    <color name="gold_accent">#F59E0B</color>
+    <color name="mint_grey">#F8FAFC</color>
+    <color name="color_success">#10B981</color>
+    <color name="color_error">#EF4444</color>
+    <!-- Premium custom palette colors for mockup -->
+    <color name="forest_green">#064E3B</color>
+    <color name="orange_fire">#F97316</color>
+    <color name="gray_text_sub">#64748B</color>
+    <color name="card_bg_light">#FFFFFF</color>
+    <color name="stat_blue_bg">#F0F7FF</color>
+    <color name="stat_gold_bg">#FFFBF0</color>
+    <color name="bottom_nav_bg">#FFFFFF</color>
+    <color name="light_gray_divider">#E2E8F0</color>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/emerald_primary</item>
+        <item name="colorPrimaryDark">@color/emerald_dark</item>
+        <item name="colorAccent">@color/gold_accent</item>
+        <item name="android:windowBackground">@color/mint_grey</item>
+    </style>
+</resources>
